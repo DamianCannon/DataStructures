@@ -7,4 +7,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="DataStructureLibraryTests\**" />
+    <Compile Remove="DataStructureLibrary\**" />
+    <EmbeddedResource Remove="DataStructureLibraryTests\**" />
+    <EmbeddedResource Remove="DataStructureLibrary\**" />
+    <None Remove="DataStructureLibraryTests\**" />
+    <None Remove="DataStructureLibrary\**" />
+  </ItemGroup>
+
 </Project>
