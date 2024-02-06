@@ -11,6 +11,8 @@
             _next = null;
         }
 
+        public LinkedListNode? Next { get; set; }
+
         public LinkedListNode AddNext(string value)
         {
             _next = new LinkedListNode(value);

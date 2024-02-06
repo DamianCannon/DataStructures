@@ -9,8 +9,33 @@
             _head = null;
         }
 
-        public LinkedListNode? Head { get; }
+        public LinkedListNode? Head
+        {
+            get
+            {
+                return _head;
+            }
+        }
 
+        public LinkedListNode Append(string value)
+        {
+            var newNode = new LinkedListNode(value);
+            if (_head == null)
+            {
+                _head = newNode;
+            } 
+            else
+            {
+                var currentNode = _head;
+                while (currentNode.Next !=  null)
+                {
+                    currentNode = currentNode.Next;
+                }
+                currentNode.Next = newNode;
+            }
+
+            return newNode;
+        }
 
         // Core operations
         // Insert

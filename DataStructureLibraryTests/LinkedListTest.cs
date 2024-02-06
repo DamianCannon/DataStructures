@@ -15,5 +15,13 @@ namespace DataStructureLibraryTests
             var list = new LinkedList();
             Assert.That(list.Head, Is.Null);
         }
+
+        [Test]
+        public void WhenFirstItemAddedToLinkedListItHasAHeadNode()
+        {
+            var list = new LinkedList();
+            list.Append("Test Case");
+            Assert.That(list.Head, Is.Not.Null);
+        }
     }
 }
