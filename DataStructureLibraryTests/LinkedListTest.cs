@@ -4,11 +4,6 @@ namespace DataStructureLibraryTests
 {
     public class Tests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
         public void WhenLinkedListCreatedItHasNoNodes()
         {
@@ -109,6 +104,56 @@ namespace DataStructureLibraryTests
                 Assert.That(list.Head?.Next, Is.EqualTo(thirdItem));
                 Assert.That(list.Head?.Next?.Next, Is.EqualTo(secondItem));
             });
+        }
+
+        [Test]
+        public void WhenListHasOneNodeItCanBeRemoved()
+        {
+            var list = new LinkedList();
+            var firstItem = list.Append("Test Case 1");
+            list.Remove(firstItem);
+
+            Assert.That(list.Head, Is.Null);
+        }
+        
+        [Test]
+        public void WhenListHasTwoNodesTheFirstCanBeRemoved()
+        {
+            var list = new LinkedList();
+            var firstItem = list.Append("Test Case 1");
+            var secondItem = list.Append("Test Case 2");
+            list.Remove(firstItem);
+
+            Assert.That(list.Head, Is.EqualTo(secondItem));
+            Assert.That(list.Head?.Next, Is.Null);
+        }
+
+        [Test]
+        public void WhenListHasThreeNodesTheSecondCanBeRemoved()
+        {
+            var list = new LinkedList();
+            var firstItem = list.Append("Test Case 1");
+            var secondItem = list.Append("Test Case 2");
+            var thirdItem = list.Append("Test Case 3");
+            list.Remove(secondItem);
+
+            Assert.That(list.Head, Is.EqualTo(firstItem));
+            Assert.That(list.Head?.Next, Is.EqualTo(thirdItem));
+            Assert.That(list.Head?.Next?.Next, Is.Null);
+        }
+
+        [Test]
+        public void WhenListHasThreeNodesTheLastCanBeRemoved()
+        {
+            var list = new LinkedList();
+            var firstItem = list.Append("Test Case 1");
+            var secondItem = list.Append("Test Case 2");
+            var thirdItem = list.Append("Test Case 3");
+            list.Remove(thirdItem);
+
+            Assert.That(list.Head, Is.EqualTo(firstItem));
+            Assert.That(list.Head?.Next, Is.EqualTo(secondItem));
+            Assert.That(list.Head?.Next?.Next, Is.Null);
         }
     }
 }
