@@ -17,11 +17,23 @@ namespace DataStructureLibraryTests
         }
 
         [Test]
-        public void WhenFirstItemAddedToLinkedListItHasAHeadNode()
+        public void WhenFirstItemAddedToLinkedListItHasAHeadNodeButNoFollowingNode()
         {
             var list = new LinkedList();
-            list.Append("Test Case");
+            list.Append("Test Case 1");
             Assert.That(list.Head, Is.Not.Null);
+            Assert.That(list.Head.Next, Is.Null);
         }
+
+        [Test]
+        public void WhenSecondItemAddedToLinkedListItHasAHeadNodeAndAFollowingNode()
+        {
+            var list = new LinkedList();
+            list.Append("Test Case 1");
+            list.Append("Test Case 2");
+            Assert.That(list.Head, Is.Not.Null);
+            Assert.That(list.Head.Next, Is.Not.Null);
+        }
+
     }
 }
