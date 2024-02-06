@@ -1,3 +1,5 @@
+using DataStructureLibrary;
+
 namespace DataStructureLibraryTests
 {
     public class Tests
@@ -8,9 +10,10 @@ namespace DataStructureLibraryTests
         }
 
         [Test]
-        public void Test1()
+        public void WhenLinkedListCreatedItHasNoNodes()
         {
-            Assert.Pass();
+            var list = new LinkedList();
+            Assert.That(list.Head, Is.Null);
         }
     }
 }
