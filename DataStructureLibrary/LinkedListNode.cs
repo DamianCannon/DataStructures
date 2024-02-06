@@ -2,7 +2,7 @@
 {
     public class LinkedListNode
     {
-        private string _value;
+        private readonly string? _value;
         private LinkedListNode? _next;
 
         public LinkedListNode(string value)
@@ -11,13 +11,23 @@
             _next = null;
         }
 
-        public LinkedListNode? Next { get; set; }
-
-        public LinkedListNode AddNext(string value)
-        {
-            _next = new LinkedListNode(value);
-            return _next;
+        public string? Value {
+            get
+            {
+                return _value;
+            }
         }
 
+        public LinkedListNode? Next
+        {
+            get
+            {
+                return _next;
+            }
+            set 
+            {
+                _next = value;
+            }
+        }
     }
 }

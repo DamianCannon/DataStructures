@@ -37,10 +37,27 @@
             return newNode;
         }
 
+        public LinkedListNode? Traverse(Func<LinkedListNode, bool> IsNodeAMatch)
+        {
+            var currentNode = _head;
+            LinkedListNode? lastNode = null;
+            while (currentNode != null)
+            {
+                if (IsNodeAMatch(currentNode))
+                {
+                    return currentNode;
+                }
+
+                lastNode = currentNode;
+                currentNode = currentNode.Next;
+            }
+
+            return lastNode;
+        }
+
         // Core operations
         // Insert
         // Delete
-        // Traverse
         // Search
 
     }
