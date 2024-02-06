@@ -81,5 +81,34 @@ namespace DataStructureLibraryTests
             });
         }
 
+        [Test]
+        public void WhenListHasOneNodeAnotherOneCanBeInsertedAtTheEnd()
+        {
+            var list = new LinkedList();
+            var firstItem = list.Append("Test Case 1");
+            var secondItem = list.InsertAt(firstItem, "Test Case 2");
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(list.Head, Is.EqualTo(firstItem));
+                Assert.That(list.Head?.Next, Is.EqualTo(secondItem));
+            });
+        }
+
+        [Test]
+        public void WhenListHasTwoNodesAnotherOneCanBeInsertedBetweenThem()
+        {
+            var list = new LinkedList();
+            var firstItem = list.Append("Test Case 1");
+            var secondItem = list.Append("Test Case 2");
+            var thirdItem = list.InsertAt(firstItem, "Test Case 3");
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(list.Head, Is.EqualTo(firstItem));
+                Assert.That(list.Head?.Next, Is.EqualTo(thirdItem));
+                Assert.That(list.Head?.Next?.Next, Is.EqualTo(secondItem));
+            });
+        }
     }
 }

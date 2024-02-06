@@ -55,8 +55,16 @@
             return lastNode;
         }
 
+        public LinkedListNode InsertAt(LinkedListNode node, string value) {
+            var newNode = new LinkedListNode(value)
+            {
+                Next = node.Next
+            };
+            node.Next = newNode;
+            return newNode;
+        }
+
         // Core operations
-        // Insert
         // Delete
         // Search
 
