@@ -18,16 +18,16 @@
     // 1. No random access
     // 2. Extra memory space for pointers
     // 3. Retrieval is always O(n)
-    public class LinkedList
+    public class SingleLinkedList
     {
-        private LinkedListNode? _head;
+        private SingleLinkedListNode? _head;
 
-        public LinkedList()
+        public SingleLinkedList()
         {
             _head = null;
         }
 
-        public LinkedListNode? Head
+        public SingleLinkedListNode? Head
         {
             get
             {
@@ -35,9 +35,9 @@
             }
         }
 
-        public LinkedListNode Append(string value)
+        public SingleLinkedListNode Append(string value)
         {
-            var newNode = new LinkedListNode(value);
+            var newNode = new SingleLinkedListNode(value);
             if (_head == null)
             {
                 _head = newNode;
@@ -55,10 +55,10 @@
             return newNode;
         }
 
-        public LinkedListNode? Traverse(Func<LinkedListNode, bool> IsNodeAMatch)
+        public SingleLinkedListNode? Traverse(Func<SingleLinkedListNode, bool> IsNodeAMatch)
         {
             var currentNode = _head;
-            LinkedListNode? lastNode = null;
+            SingleLinkedListNode? lastNode = null;
             while (currentNode != null)
             {
                 if (IsNodeAMatch(currentNode))
@@ -73,8 +73,8 @@
             return lastNode;
         }
 
-        public LinkedListNode InsertAt(LinkedListNode node, string value) {
-            var newNode = new LinkedListNode(value)
+        public SingleLinkedListNode InsertAt(SingleLinkedListNode node, string value) {
+            var newNode = new SingleLinkedListNode(value)
             {
                 Next = node.Next
             };
@@ -82,7 +82,7 @@
             return newNode;
         }
 
-        public void Remove(LinkedListNode node)
+        public void Remove(SingleLinkedListNode node)
         {
             if (_head == node)
             {

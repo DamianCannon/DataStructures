@@ -7,14 +7,14 @@ namespace DataStructureLibraryTests
         [Test]
         public void WhenLinkedListCreatedItHasNoNodes()
         {
-            var list = new LinkedList();
+            var list = new SingleLinkedList();
             Assert.That(list.Head, Is.Null);
         }
 
         [Test]
         public void WhenFirstItemAddedToLinkedListItHasAHeadNodeButNoFollowingNode()
         {
-            var list = new LinkedList();
+            var list = new SingleLinkedList();
             list.Append("Test Case 1");
             Assert.That(list.Head, Is.Not.Null);
             Assert.That(list.Head.Next, Is.Null);
@@ -23,7 +23,7 @@ namespace DataStructureLibraryTests
         [Test]
         public void WhenSecondItemAddedToLinkedListItHasAHeadNodeAndAFollowingNode()
         {
-            var list = new LinkedList();
+            var list = new SingleLinkedList();
             list.Append("Test Case 1");
             list.Append("Test Case 2");
             Assert.That(list.Head, Is.Not.Null);
@@ -33,7 +33,7 @@ namespace DataStructureLibraryTests
         [Test]
         public void WhenThirdItemAddedToLinkedListWeCanTraverseThroughThemInOrder()
         {
-            var list = new LinkedList();
+            var list = new SingleLinkedList();
             var firstItem = list.Append("Test Case 1");
             var secondItem = list.Append("Test Case 2");
             var thirdItem = list.Append("Test Case 3");
@@ -63,7 +63,7 @@ namespace DataStructureLibraryTests
         [Test]
         public void WhenTraverseFunctionIsAlwaysFalseThenLastNodeIsFound()
         {
-            var list = new LinkedList();
+            var list = new SingleLinkedList();
             var firstItem = list.Append("Test Case 1");
             var secondItem = list.Append("Test Case 2");
             var thirdItem = list.Append("Test Case 3");
@@ -79,7 +79,7 @@ namespace DataStructureLibraryTests
         [Test]
         public void WhenListHasOneNodeAnotherOneCanBeInsertedAtTheEnd()
         {
-            var list = new LinkedList();
+            var list = new SingleLinkedList();
             var firstItem = list.Append("Test Case 1");
             var secondItem = list.InsertAt(firstItem, "Test Case 2");
 
@@ -93,7 +93,7 @@ namespace DataStructureLibraryTests
         [Test]
         public void WhenListHasTwoNodesAnotherOneCanBeInsertedBetweenThem()
         {
-            var list = new LinkedList();
+            var list = new SingleLinkedList();
             var firstItem = list.Append("Test Case 1");
             var secondItem = list.Append("Test Case 2");
             var thirdItem = list.InsertAt(firstItem, "Test Case 3");
@@ -109,7 +109,7 @@ namespace DataStructureLibraryTests
         [Test]
         public void WhenListHasOneNodeItCanBeRemoved()
         {
-            var list = new LinkedList();
+            var list = new SingleLinkedList();
             var firstItem = list.Append("Test Case 1");
             list.Remove(firstItem);
 
@@ -119,7 +119,7 @@ namespace DataStructureLibraryTests
         [Test]
         public void WhenListHasTwoNodesTheFirstCanBeRemoved()
         {
-            var list = new LinkedList();
+            var list = new SingleLinkedList();
             var firstItem = list.Append("Test Case 1");
             var secondItem = list.Append("Test Case 2");
             list.Remove(firstItem);
@@ -131,7 +131,7 @@ namespace DataStructureLibraryTests
         [Test]
         public void WhenListHasThreeNodesTheSecondCanBeRemoved()
         {
-            var list = new LinkedList();
+            var list = new SingleLinkedList();
             var firstItem = list.Append("Test Case 1");
             var secondItem = list.Append("Test Case 2");
             var thirdItem = list.Append("Test Case 3");
@@ -145,7 +145,7 @@ namespace DataStructureLibraryTests
         [Test]
         public void WhenListHasThreeNodesTheLastCanBeRemoved()
         {
-            var list = new LinkedList();
+            var list = new SingleLinkedList();
             var firstItem = list.Append("Test Case 1");
             var secondItem = list.Append("Test Case 2");
             var thirdItem = list.Append("Test Case 3");

@@ -1,11 +1,11 @@
 ﻿namespace DataStructureLibrary
 {
-    public class LinkedListNode
+    public class SingleLinkedListNode
     {
         private readonly string? _value;
-        private LinkedListNode? _next;
+        private SingleLinkedListNode? _next;
 
-        public LinkedListNode(string value)
+        public SingleLinkedListNode(string value)
         {
             _value = value;
             _next = null;
@@ -18,7 +18,7 @@
             }
         }
 
-        public LinkedListNode? Next
+        public SingleLinkedListNode? Next
         {
             get
             {
