@@ -16,4 +16,8 @@
     <None Remove="DataStructureLibrary\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="DataStructureLibrary\DataStructureLibrary.csproj" />
+  </ItemGroup>
+
 </Project>
