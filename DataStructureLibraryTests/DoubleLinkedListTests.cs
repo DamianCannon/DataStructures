@@ -93,6 +93,7 @@ namespace DataStructureLibraryTests
             {
                 Assert.That(list.Head, Is.EqualTo(firstItem));
                 Assert.That(list.Head?.Next, Is.EqualTo(secondItem));
+                Assert.That(list.Head?.Next?.Prev, Is.EqualTo(firstItem));
             });
         }
 
@@ -108,7 +109,9 @@ namespace DataStructureLibraryTests
             {
                 Assert.That(list.Head, Is.EqualTo(firstItem));
                 Assert.That(list.Head?.Next, Is.EqualTo(thirdItem));
+                Assert.That(list.Head?.Next?.Prev, Is.EqualTo(firstItem));
                 Assert.That(list.Head?.Next?.Next, Is.EqualTo(secondItem));
+                Assert.That(list.Head?.Next?.Next?.Prev, Is.EqualTo(thirdItem));
             });
         }
 

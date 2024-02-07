@@ -76,9 +76,14 @@
         public DoubleLinkedListNode InsertAt(DoubleLinkedListNode node, string value) {
             var newNode = new DoubleLinkedListNode(value)
             {
-                Next = node.Next
+                Next = node.Next,
+                Prev = node
             };
             node.Next = newNode;
+            if (newNode.Next != null)
+            {
+                newNode.Next.Prev = newNode;
+            }
             return newNode;
         }
 
