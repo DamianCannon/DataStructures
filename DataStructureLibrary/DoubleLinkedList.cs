@@ -92,6 +92,10 @@
             if (_head == node)
             {
                 _head = node?.Next;
+                if (_head != null)
+                {
+                    _head.Prev = null;
+                }
             }
             else 
             { 
@@ -99,6 +103,11 @@
                 if (previousNode != null)
                 {
                     previousNode.Next = node?.Next;
+
+                    if (node?.Next != null)
+                    {
+                        node.Next.Prev = previousNode;
+                    }
                 }
             }
         }

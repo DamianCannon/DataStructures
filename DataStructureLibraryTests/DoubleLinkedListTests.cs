@@ -135,6 +135,7 @@ namespace DataStructureLibraryTests
 
             Assert.That(list.Head, Is.EqualTo(secondItem));
             Assert.That(list.Head?.Next, Is.Null);
+            Assert.That(list.Head?.Prev, Is.Null);
         }
 
         [Test]
@@ -149,6 +150,7 @@ namespace DataStructureLibraryTests
             Assert.That(list.Head, Is.EqualTo(firstItem));
             Assert.That(list.Head?.Next, Is.EqualTo(thirdItem));
             Assert.That(list.Head?.Next?.Next, Is.Null);
+            Assert.That(list.Head?.Next?.Prev, Is.EqualTo(firstItem));
         }
 
         [Test]
@@ -163,6 +165,7 @@ namespace DataStructureLibraryTests
             Assert.That(list.Head, Is.EqualTo(firstItem));
             Assert.That(list.Head?.Next, Is.EqualTo(secondItem));
             Assert.That(list.Head?.Next?.Next, Is.Null);
+            Assert.That(list.Head?.Next?.Prev, Is.EqualTo(firstItem));
         }
     }
 }
