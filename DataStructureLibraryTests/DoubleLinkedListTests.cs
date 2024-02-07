@@ -2,38 +2,40 @@ using DataStructureLibrary;
 
 namespace DataStructureLibraryTests
 {
-    public class Tests
+    public class DoubleLinkedListTests
     {
         [Test]
         public void WhenLinkedListCreatedItHasNoNodes()
         {
-            var list = new SingleLinkedList();
+            var list = new DoubleLinkedList();
             Assert.That(list.Head, Is.Null);
         }
 
         [Test]
         public void WhenFirstItemAddedToLinkedListItHasAHeadNodeButNoFollowingNode()
         {
-            var list = new SingleLinkedList();
-            list.Append("Test Case 1");
-            Assert.That(list.Head, Is.Not.Null);
+            var list = new DoubleLinkedList();
+            var firstItem = list.Append("Test Case 1");
+            Assert.That(list.Head, Is.EqualTo(firstItem));
             Assert.That(list.Head.Next, Is.Null);
+            Assert.That(list.Head.Prev, Is.Null);
         }
 
         [Test]
         public void WhenSecondItemAddedToLinkedListItHasAHeadNodeAndAFollowingNode()
         {
-            var list = new SingleLinkedList();
-            list.Append("Test Case 1");
-            list.Append("Test Case 2");
-            Assert.That(list.Head, Is.Not.Null);
-            Assert.That(list.Head.Next, Is.Not.Null);
+            var list = new DoubleLinkedList();
+            var firstItem = list.Append("Test Case 1");
+            var secondItem = list.Append("Test Case 2");
+            Assert.That(list.Head, Is.EqualTo(firstItem));
+            Assert.That(list.Head.Next, Is.EqualTo(secondItem));
+            Assert.That(list.Head.Next.Prev, Is.EqualTo(firstItem));
         }
 
         [Test]
         public void WhenThirdItemAddedToLinkedListWeCanTraverseThroughThemInOrder()
         {
-            var list = new SingleLinkedList();
+            var list = new DoubleLinkedList();
             var firstItem = list.Append("Test Case 1");
             var secondItem = list.Append("Test Case 2");
             var thirdItem = list.Append("Test Case 3");
@@ -43,6 +45,7 @@ namespace DataStructureLibraryTests
             {
                 Assert.That(list.Head, Is.EqualTo(firstFound));
                 Assert.That(firstFound?.Next, Is.EqualTo(secondItem));
+                Assert.That(firstFound?.Prev, Is.Null);
             });
 
             var secondFound = list.Traverse((node) => node.Value == secondItem.Value);
@@ -50,6 +53,7 @@ namespace DataStructureLibraryTests
             {
                 Assert.That(list.Head?.Next, Is.EqualTo(secondFound));
                 Assert.That(secondFound?.Next, Is.EqualTo(thirdItem));
+                Assert.That(secondFound?.Prev, Is.EqualTo(firstItem));
             });
 
             var thirdFound = list.Traverse((node) => node.Value == thirdItem.Value);
@@ -57,13 +61,14 @@ namespace DataStructureLibraryTests
             {
                 Assert.That(list.Head?.Next?.Next, Is.EqualTo(thirdFound));
                 Assert.That(thirdFound?.Next, Is.Null);
+                Assert.That(thirdFound?.Prev, Is.EqualTo(secondItem));
             });
         }
 
         [Test]
         public void WhenTraverseFunctionIsAlwaysFalseThenLastNodeIsFound()
         {
-            var list = new SingleLinkedList();
+            var list = new DoubleLinkedList();
             var firstItem = list.Append("Test Case 1");
             var secondItem = list.Append("Test Case 2");
             var thirdItem = list.Append("Test Case 3");
@@ -73,13 +78,14 @@ namespace DataStructureLibraryTests
             {
                 Assert.That(foundItem, Is.EqualTo(thirdItem));
                 Assert.That(foundItem?.Next, Is.Null);
+                Assert.That(foundItem?.Prev, Is.EqualTo(secondItem));
             });
         }
 
         [Test]
         public void WhenListHasOneNodeAnotherOneCanBeInsertedAtTheEnd()
         {
-            var list = new SingleLinkedList();
+            var list = new DoubleLinkedList();
             var firstItem = list.Append("Test Case 1");
             var secondItem = list.InsertAt(firstItem, "Test Case 2");
 
@@ -93,7 +99,7 @@ namespace DataStructureLibraryTests
         [Test]
         public void WhenListHasTwoNodesAnotherOneCanBeInsertedBetweenThem()
         {
-            var list = new SingleLinkedList();
+            var list = new DoubleLinkedList();
             var firstItem = list.Append("Test Case 1");
             var secondItem = list.Append("Test Case 2");
             var thirdItem = list.InsertAt(firstItem, "Test Case 3");
@@ -109,7 +115,7 @@ namespace DataStructureLibraryTests
         [Test]
         public void WhenListHasOneNodeItCanBeRemoved()
         {
-            var list = new SingleLinkedList();
+            var list = new DoubleLinkedList();
             var firstItem = list.Append("Test Case 1");
             list.Remove(firstItem);
 
@@ -119,7 +125,7 @@ namespace DataStructureLibraryTests
         [Test]
         public void WhenListHasTwoNodesTheFirstCanBeRemoved()
         {
-            var list = new SingleLinkedList();
+            var list = new DoubleLinkedList();
             var firstItem = list.Append("Test Case 1");
             var secondItem = list.Append("Test Case 2");
             list.Remove(firstItem);
@@ -131,7 +137,7 @@ namespace DataStructureLibraryTests
         [Test]
         public void WhenListHasThreeNodesTheSecondCanBeRemoved()
         {
-            var list = new SingleLinkedList();
+            var list = new DoubleLinkedList();
             var firstItem = list.Append("Test Case 1");
             var secondItem = list.Append("Test Case 2");
             var thirdItem = list.Append("Test Case 3");
@@ -145,7 +151,7 @@ namespace DataStructureLibraryTests
         [Test]
         public void WhenListHasThreeNodesTheLastCanBeRemoved()
         {
-            var list = new SingleLinkedList();
+            var list = new DoubleLinkedList();
             var firstItem = list.Append("Test Case 1");
             var secondItem = list.Append("Test Case 2");
             var thirdItem = list.Append("Test Case 3");
